@@ -108,3 +108,13 @@ A aula foi focada em organização, ferramentas de desenvolvimento e configuraç
     - flutter clean
         - limpa chace do build(apaga o apk anterior)
     - flutter run -v
+        - bluid do app (apk)
+
+- gerenciamento de dependências do PubSpec()
+    - instalação
+        - flutter pub add nome_dependencia
+    - baixar e instalar dependências projetadas 
+        - flutter pub get
+    - outros comando do flutter pub(dependências)
+        - flutter pub outdated (verifica se as dependências estão desatualizadas)
+        - flutter pub upgrade (atualiza as dependências do flutter pub)
