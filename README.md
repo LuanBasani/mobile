@@ -122,28 +122,48 @@ A aula foi focada em organização, ferramentas de desenvolvimento e configuraç
 ### Estrutura Básica de um Aplicativo em Flutter
 
 #### Árvore de Widgets
-```
-mermaid
-flowchart TD
-    subgraph MaterialApp["MaterialApp"]
-    end
-    subgraph Janelas["Janelas"]
-        StateLess["StateLess"]
-        StateFull["StateFull"]
-    end
-    subgraph Scaffold["Scaffold"]
-        AppBar["Appbar"]
-        Body["Body"]
-        BNBar["BNBar"]
-        Drawer["Drawer"]
-        FAButton["FAButton"]
-        SnackBar["SnackBar"]
-    end
-    MaterialApp --> Janelas
-    Janelas --> Scaffold            
+```mermaid
+
+    flowchart TD
+        subgraph MaterialApp["MaterialApp"]
+        end
+        subgraph Janelas["Janelas"]
+            StateLess["StateLess"]
+            StateFull["StateFull"]
+        end
+        subgraph Scaffold["Scaffold"]
+            AppBar["Appbar"]
+            Body["Body"]
+            BNBar["BNBar"]
+            Drawer["Drawer"]
+            FAButton["FAButton"]
+            SnackBar["SnackBar"]
+        end
+        MaterialApp --> Janelas
+        Janelas --> Scaffold         
 
 ```
 
     1° Camada - MaterialAPP
     1.5° Camada - Tipo de Janela (StateLess | StateFull)
     2° Camada - Janelas (Scaffold)
+
+
+#### Tipo de Janelas
+
+- StateLess:
+    Janelas Imutáveis - Uma vez construida ela não se altera
+    obs: Pode ter Movimento (Gif, Movies, Carrossel, Cards), mas não consigo alterar as imagens, os videos e os elementos de movimento depois de montados
+
+- StateFull:
+    Janelas que permitem mudança de estado(SetState)
+    Obs: Permite adicionar elementos a janela, como novas imagens, novos textos entre outros.
+
+- Comparativo Stateless vs  Stateful
+
+|Caracteristica|Stateless|Stateful|
+|-|-|-|
+|Mutabilidade| Não | Sim |
+|Uso Ideal | Layouts Fixo e Exibição de dados Estáticos | Interações do Usuários, Animações e Dados Dinâmicos|
+|Armazenamento de Estado| Não | Sim
+|Método principal | build() | build()+setstate()|
