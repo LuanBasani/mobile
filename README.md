@@ -122,27 +122,27 @@ A aula foi focada em organização, ferramentas de desenvolvimento e configuraç
 ### Estrutura Básica de um Aplicativo em Flutter
 
 #### Árvore de Widgets
-    ```mermaid
+```
+mermaid
+flowchart TD
+    subgraph MaterialApp["MaterialApp"]
+    end
+    subgraph Janelas["Janelas"]
+        StateLess["StateLess"]
+        StateFull["StateFull"]
+    end
+    subgraph Scaffold["Scaffold"]
+        AppBar["Appbar"]
+        Body["Body"]
+        BNBar["BNBar"]
+        Drawer["Drawer"]
+        FAButton["FAButton"]
+        SnackBar["SnackBar"]
+    end
+    MaterialApp --> Janelas
+    Janelas --> Scaffold            
 
-    flowchart TD
-        subgraph MaterialApp["MaterialApp"]
-        end
-        subgraph Janelas["Janelas"]
-            StateLess["StateLess"]
-            StateFull["StateFull"]
-        end
-        subgraph Scaffold["Scaffold"]
-            AppBar["Appbar"]
-            Body["Body"]
-            BNBar["BNBar"]
-            Drawer["Drawer"]
-            FAButton["FAButton"]
-            SnackBar["SnackBar"]
-        end
-        MaterialApp --> Janelas
-        Janelas --> Scaffold            
-
-    ```
+```
 
     1° Camada - MaterialAPP
     1.5° Camada - Tipo de Janela (StateLess | StateFull)
