@@ -123,6 +123,7 @@ A aula foi focada em organização, ferramentas de desenvolvimento e configuraç
 
 #### Árvore de Widgets
     ```mermaid
+
     flowchart TD
         subgraph MaterialApp["MaterialApp"]
         end
@@ -138,8 +139,8 @@ A aula foi focada em organização, ferramentas de desenvolvimento e configuraç
             FAButton["FAButton"]
             SnackBar["SnackBar"]
         end
-        MaterialApp -> Janelas
-        Janelas -> Scaffold            
+        MaterialApp --> Janelas
+        Janelas --> Scaffold            
 
     ```
 
