@@ -29,7 +29,6 @@ class _FormularioPageState extends State<FormularioPage> {
   double _idade = 18;
   List<String> _interesses = [];
   String _cidade = "Americana";
-  final formKey = GlobalKey<FormState>();
 
   //chave global de validação do formulário
   final formKey = GlobalKey<FormState>(); // formulário somente será enviado se a chave estiver validada
