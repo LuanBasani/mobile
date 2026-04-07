@@ -1,61 +1,87 @@
-// tela com elementos de formulário para interação do usuário
-// textField -> entrada de dados
-// checkbox -> seleção de opções
-// radio button ->  uma única opção
-// slider -> barra de seleção
-//switch -> botão de alternância
-// dropdown => menu suspenso
+//pagina de contato
+// campo para nome, email, telefone e mensagem
+// botão para enviar a mensagem
 
-// usar elemento form para validação de campos
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class FormularioPage extends StatefulWidget {
-  const FormularioPage({super.key});
+class ContatoPage extends StatefulWidget {
+  const ContatoPage({super.key});
 
   @override
-  State<FormularioPage> createState() => _FormularioPageState();
+  State<ContatoPage> createState() => _ContatoPageState();
 }
 
-class _FormularioPageState extends State<FormularioPage> {
-  // atributos (nome,email,senha,validação de senha, termos de uso(switch), sexo(radio), idade(slider), interesses(checkbox), interesses (checkbox), cidade(dropdown))
-  String _nome = "";
-  String _email = "";
-  String _senha = "";
-  String _confirmarSenha = "";
-  bool _termosAceitos = false;
-  String _sexo = "Masculino";
-  double _idade = 18;
-  List<String> _interesses = [];
-  String _cidade = "Americana";
+class _ContatoPageState extends State<ContatoPage> {
 
-  //chave global de validação do formulário
-  final formKey = GlobalKey<FormState>(); // formulário somente será enviado se a chave estiver validada
-
-
-
-  @override
+  final TextEditingController _nomeController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _telefoneController = TextEditingController();
+  final TextEditingController _mensagemController = TextEditingController();
+  //métodos
+  // build da tela
+@override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Formulário de Cadastro"),),
-      body: Padding(
-        padding: EdgeInsets.all(8),
-        child: Form(
-          key: formKey, //chave de validação
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                //campo do nome
-                TextFormField(
-                  //validação do campo
-                  validator: (value) => value == null || value.isEmpty ? ,
-                )
-              ],
-            ),
+      appBar: AppBar(title: Text("Contato"), centerTitle: true,),
+      body: Padding(padding: EdgeInsets.all(8),
+      child: Column(
+        children: [
+          // não usaremos form
+          TextField(
+            controller: _nomeController,
+            decoration: InputDecoration(labelText: "Nome"),
           ),
-        ),
-        ),
+          SizedBox(height: 20,),
+          TextField(
+            controller: _emailController,
+            decoration: InputDecoration(labelText: "Email"),
+          ),
+          SizedBox(height: 20,),
+          TextField(
+            controller: _telefoneController,
+            //mascara de telefone (XX) XXXXX-XXXX
+            decoration: InputDecoration(labelText: "Telefone", hintText: "(XX) XXXXX-XXXX"),
+          ),
+          SizedBox(height: 20,),
+          //campo para mensagem com multiplas linhas
+          TextField(
+            controller: _mensagemController,
+            decoration: InputDecoration(labelText: "Mensagem"),
+            maxLines: 5, //Limita o Campo a 5 Linhas
+          ),
+          SizedBox(height: 20,),
+          //enviar mensagem
+          ElevatedButton(onPressed: () => _enviarMessagem(), child: Text("Enviar Mensagem"))
+          ],
+      ),),
     );
+  }
+  
+  void _enviarMessagem() {
+    //exibir um dialogo de confirmação
+    showDialog(context: context, builder: (context)=> AlertDialog(
+      title: Text("Confirmação de Envio"),
+      content: ListBody(children: [
+        Text("Deseja Enviar a Seguinte Mensagem?"),
+        SizedBox(height: 20,),
+        Text("Nome: ${_nomeController.text}"),
+        Text("Nome: ${_emailController.text}"),
+        Text("Nome: ${_telefoneController.text}"),
+        Text("Nome: ${_mensagemController.text}"),
+      ],),
+      actions: [
+        TextButton(onPressed: () => Navigator.pop(context), child: Text("Cancelar")),
+        ElevatedButton(onPressed: (){
+          // Enviar a Mensagem
+          //limpar os Campos
+          _nomeController.clear();
+          _emailController.clear();
+          _telefoneController.clear();
+          _mensagemController.clear();
+          //fechar o dialogo
+          Navigator.pop(context);
+        }, child: Text("Enviar"))
+      ],
+    ));
   }
 }

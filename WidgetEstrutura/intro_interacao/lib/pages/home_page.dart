@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //logo do aplicativo com atraso de carregamento de 2 segundos
-              Image.network("https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Roblox_icon_-_2017.svg/250px-Roblox_icon_-_2017.svg.png",
+              Image.network("https://static.vecteezy.com/system/resources/thumbnails/027/127/499/small_2x/roblox-logo-roblox-icon-transparent-free-png.png",
               width: 150,
               height: 150,),
               //bloco de espaçamento entre objetos
@@ -39,8 +39,7 @@ class HomePage extends StatelessWidget {
                 child: Text("Contato")),
             ],
           ),
-        ),
-      ),
+        ),),
     );
   }
 }
